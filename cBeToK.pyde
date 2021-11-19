@@ -5,7 +5,7 @@ def draw():
     global angle
     background(100)
     translate(300,200)
-    fill(255, 255, 0)
+    fill(255,255,random(250))
     ellipse(0,0,30,30)
     rotate(radians(angle))
     ellipse(60,0,90,50)
@@ -113,7 +113,7 @@ def draw():
     ellipse(60,0,90,50)
     fill(110,110,225)
     ellipse(120,0,20,50)
-    fill(200,255,125)
+    fill(random(255),random(255),random(255))
     rect(140,-25,20,50)
     fill(random(255),random(255),random(255))
     rect(170,-25,50,50)
