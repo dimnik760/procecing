@@ -18,6 +18,7 @@ def draw():
     ellipse(random(-300,300),y-random(-100,200),10,10)
     ellipse(random(-300,300),y-random(-100,200),10,10)
     ellipse(random(-300,300),y-random(-100,200),10,10)
+    translate(0,60)
     fill(0, 100, 0)
     triangle(-50,-80,30,-80,-10,-150)
     translate(0,70) 
