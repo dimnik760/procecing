@@ -42,7 +42,6 @@ def mouseClicked():
         bg = 255
         hot = hot + 1
         
-    
     #если круглая кнопка нажата
     xDif = 400 - mouseX
     yDif = 350 - mouseY
