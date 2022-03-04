@@ -106,7 +106,7 @@ def draw():
     
 def mouseClicked():
     
-    global bg , hot , perem , rid , xy , gren , blie , rezwim , onof
+    global bg , hot , perem , rid , xy , gren , blie , rezwim , onof , run
     # если прямоугольная кнопка нажата
     
     if mouseX > run and mouseX < run+100 and mouseY > 150 and mouseY < 200:
@@ -121,6 +121,7 @@ def mouseClicked():
         hot = 0
         perem = 0
         xy = 0
+        rezwim = 2.5
     xDif = 300 - mouseX
     yDif = 350 - mouseY
     fill(250)
@@ -153,3 +154,13 @@ def mouseClicked():
           onof = 0
       else :
         onof = 1 
+        #кнопки легко-сложно
+    if mouseX > 448 and mouseX < 588 and mouseY > 20 and mouseY > 0:
+       rect(448,20,140,20)  
+       rezwim = 1   
+    if mouseX > 448 and mouseX < 588 and mouseY > 20 and mouseY > 50:
+       rect(448,50,140,20) 
+       rezwim = 2.5   
+    if mouseX > 448 and mouseX < 588 and mouseY > 20 and mouseY > 80:
+       rect(448,80,140,20)
+       rezwim = 5
