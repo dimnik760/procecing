@@ -113,6 +113,7 @@ def mouseClicked():
         bg = 255
         hot = hot + 1
         perem = perem + 20
+        onof = 0
     #если круглая кнопка нажата
     xDif = 400 - mouseX
     yDif = 350 - mouseY
@@ -122,6 +123,11 @@ def mouseClicked():
         perem = 0
         xy = 0
         rezwim = 2.5
+        run = 1
+        rid = 0
+        gren = 0
+        blie = 0
+        onof = 0
     xDif = 300 - mouseX
     yDif = 350 - mouseY
     fill(250)
@@ -130,6 +136,7 @@ def mouseClicked():
         rid  = 255
         gren = 0
         blie = 0
+        onof = 0
     xDif = 200 - mouseX
     yDif = 350 - mouseY
     fill(250)
@@ -138,6 +145,7 @@ def mouseClicked():
         gren  = 255
         rid = 0 
         blie = 0 
+        onof = 0
           
     xDif = 100 - mouseX
     yDif = 350 - mouseY
@@ -147,6 +155,7 @@ def mouseClicked():
         gren  = 0
         rid = 0 
         blie = 255 
+        onof = 0
     #кнопка настроек     
     if mouseX > 500 and mouseX < 595 and mouseY < 15 and mouseY > 0:
       rect(500,0,95,15) 
@@ -161,6 +170,6 @@ def mouseClicked():
     if mouseX > 448 and mouseX < 588 and mouseY > 20 and mouseY > 50:
        rect(448,50,140,20) 
        rezwim = 2.5   
-    if mouseX > 448 and mouseX < 588 and mouseY > 20 and mouseY > 80:
-       rect(448,80,140,20)
-       rezwim = 5
+    if mouseX > 448 and mouseX < 588 and mouseY > 80 and mouseY > 20:
+        rect(448,80,140,20)
+        rezwim = 5
