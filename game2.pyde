@@ -10,9 +10,12 @@ gren = 0
 blie = 0
 rezwim = 1
 onof = 0
+xx = 600
+yy = 400
 def setup():
-    size(600,400)
+    size(xx,yy)
 def draw():
+                  
     global run
     global bg
     global chot , hot , perem , rid , xy , y , gren , blie , rezwim , onof
@@ -23,6 +26,11 @@ def draw():
     rect(500,0,95,15)
     textSize(15)
     fill(0)
+    text("x=",180,20)
+    text("y=",180,40)
+    text(mouseX,200,20)
+    text(mouseY,200,40)
+    
     text(u"режим игры:",500,10)
     fill(0,255,255)
     ellipse(400,350,70,70)
@@ -39,7 +47,7 @@ def draw():
     text(hot,10,30)
     fill(255)
     run = run + rezwim
-    if run >= 600:
+    if run >= 650:
         run = 0 
     fill(200)
     ellipse(300,350,70,70) 
@@ -102,8 +110,7 @@ def draw():
         ellipse(random(-300,300),y-random(-100,200),10,10) 
         y = y + 5 
         if y >= 300:
-          y = -300       
-    
+          y = -300     
 def mouseClicked():
     
     global bg , hot , perem , rid , xy , gren , blie , rezwim , onof , run
@@ -164,12 +171,14 @@ def mouseClicked():
       else :
         onof = 1 
         #кнопки легко-сложно
-    if mouseX > 448 and mouseX < 588 and mouseY > 20 and mouseY > 0:
+        
+    if mouseX > 448 and mouseX < 588 and mouseY > 20 and mouseY < 40:
        rect(448,20,140,20)  
        rezwim = 1   
-    if mouseX > 448 and mouseX < 588 and mouseY > 20 and mouseY > 50:
+    if mouseX > 448 and mouseX < 588 and mouseY > 50 and mouseY < 70:
        rect(448,50,140,20) 
-       rezwim = 2.5   
-    if mouseX > 448 and mouseX < 588 and mouseY > 80 and mouseY > 20:
+       rezwim = 2.5
+          
+    if mouseX > 448 and mouseX < 588 and mouseY > 80 and mouseY < 100:
         rect(448,80,140,20)
-        rezwim = 5
+        rezwim = 10
