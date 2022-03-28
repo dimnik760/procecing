@@ -3,10 +3,11 @@ x = 240
 x2 = 350
 time = 0
 healh = 90
+inst = 0
 def setup():
     size(700,500)
 def draw():
-    global y , x , x2 , time , healh
+    global y , x , x2 , time , healh , inst
     background(0,255,253)
     line(0,240,700,240)
     rectMode(CENTER)
@@ -17,6 +18,8 @@ def draw():
     text(time,650,15)
     textSize(40)
     if keyPressed == True: 
+        if key == 'N' or key == 'n' or key == u'т' or key == u'Т':
+           inst = 1 
         if key == 'W' or key == 'w' or key == u'ц' or key == u'Ц':
             y = y + 1
             x = x - 0.3
@@ -29,6 +32,12 @@ def draw():
             x2 = x2 - 0.6
    # if mousePressed :
     
+    if inst == 0 :
+        fill(255,132,0)
+        rect(350,250,700,500)
+        fill(0,0,255)
+        text(u"управление:w a s d и мышкой ",100,250)
+        text(u"нажать n закрыть инструкцию ",100,290)
     if y == 0 :
        y = 1 
         
