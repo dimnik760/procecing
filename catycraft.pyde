@@ -30,6 +30,8 @@ def draw():
             x2 = x2 + 0.6
         if key == 'D' or key == 'd' or key == u'в' or key == u'В':
             x2 = x2 - 0.6
+        if key == 'R' or key == 'r' or key == u'к' or key == u'К':
+            
    # if mousePressed :
     
     if inst == 0 :
@@ -79,5 +81,7 @@ def draw():
         fill(255,0,0)
         textSize(80)
         text("GAME OWER!",20,250)
+        textSize(20)
+        text(u"нажмите r чтобы возродиться",20,270)
         healh = -21
     time = time + 0.020
