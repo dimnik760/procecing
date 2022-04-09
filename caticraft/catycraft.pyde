@@ -40,6 +40,7 @@ def draw():
             if healh > -19 :
                 if not sound1.isPlaying():
                     sound1.play()
+                    sound1.play()
         if key == 'S' or key == 's' or key == u'ы' or key == u'Ы':
             y = y - 1
             x = x + 0.5
@@ -47,15 +48,18 @@ def draw():
             if healh > -19 :
                 if not sound1.isPlaying():
                     sound1.play()
+                    sound1.play()
         if key == 'A' or key == 'a' or key == u'ф' or key == u'Ф':
             x2 = x2 + x3
             if healh > -19 :
                 if not sound1.isPlaying():
                     sound1.play()
+                    sound1.play()
         if key == 'D' or key == 'd' or key == u'в' or key == u'В':
             x2 = x2 - x3
             if healh > -19 :
                 if not sound1.isPlaying():
+                    sound1.play()
                     sound1.play()
         if key == 'R' or key == 'r' or key == u'к' or key == u'К':
             re = 1
@@ -98,8 +102,12 @@ def draw():
         rect(0,250,10,500)
         fill(255,0,0)
         text(u"вы врезались в барьер!",100,250)
+        if healh > -19 :
+                    sound4.play()
         healh = healh - 1
     if x2 < -40 :
+        if healh > -19 :
+                    sound4.play()
         x2 = -38
         fill(220,0,0)
         rect(700,250,10,500)
