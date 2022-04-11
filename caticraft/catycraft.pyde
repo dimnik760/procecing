@@ -143,6 +143,7 @@ def draw():
         text("GAME OWER!",20,250)
         textSize(20)
         text(u"нажмите r чтобы возродиться",20,270)
+        sound3.stop()
         healh = -21
         x3 = 0.2
         prozhealh = 0
