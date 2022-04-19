@@ -9,6 +9,7 @@ time = 0
 healh = 90
 inst = 0
 re = 0
+y2 = 0
 prozhealh = 0
 
 sound1 = 0
@@ -22,7 +23,7 @@ def setup():
     sound3 = SoundFile(this,"pisk.mp3")
     sound4 = SoundFile(this,"kotudar.mp3")
     sound2.play()
-    size(700,500)
+    size(700,500,OPENGL)
 def draw():
     global y , x , x2 , time , healh , inst , re , x3 , prozhealh, sound1 , sound2 , sound3 , sound4
     background(0,255,253)
@@ -64,6 +65,7 @@ def draw():
         if key == 'R' or key == 'r' or key == u'к' or key == u'К':
             re = 1
         if key == ' ' :
+            y2 = y2 + 1
             if healh > -19 :
                 if not sound2.isPlaying():
                     sound2.play()
@@ -94,8 +96,6 @@ def draw():
     if x > 240 :
         x = 240
         fill(255,0,0)
-    fill(250)
-    rect(x2,x,y,y)
     if x2 > 740 :
         x2 = 738
         fill(220,0,0)
@@ -163,3 +163,6 @@ def draw():
     fill(255,0,0,prozhealh)
     rect(-1,-1,702,502)
     time = time + 0.020
+    fill(250)
+    translate(x2,240)
+    box(y,y,y)
