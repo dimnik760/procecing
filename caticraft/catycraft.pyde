@@ -1,6 +1,6 @@
 add_library('sound')
-
-
+play = 0
+c = 500
 y = 1
 x = 240
 x2 = 350
@@ -10,8 +10,10 @@ healh = 90
 inst = 0
 re = 0
 y2 = 0
+jamp = 0
 prozhealh = 0
-
+gren = 0
+fil = 1
 sound1 = 0
 sound2 = 0
 sound3 = 0
@@ -25,7 +27,7 @@ def setup():
     sound2.play()
     size(700,500,OPENGL)
 def draw():
-    global y , x , x2 , time , healh , inst , re , x3 , prozhealh, sound1 , sound2 , sound3 , sound4
+    global y , x , x2 , time , healh , inst , re , x3 , prozhealh, sound1 , sound2 , sound3 , sound4 , y2 , jamp , c , gren , fil , play
     background(0,255,253)
     line(0,240,700,240)
     rectMode(CENTER)
@@ -65,7 +67,9 @@ def draw():
         if key == 'R' or key == 'r' or key == u'к' or key == u'К':
             re = 1
         if key == ' ' :
-            y2 = y2 + 1
+            x = x + 100
+            jamp = 1
+            y2 = 1
             if healh > -19 :
                 if not sound2.isPlaying():
                     sound2.play()
@@ -93,9 +97,9 @@ def draw():
         x3 = 0.2
     if y == 0 :
        y = 1 
-    if x > 240 :
-        x = 240
-        fill(255,0,0)
+    if jamp == 0 :   
+        if x > 240 :
+            x = 240
     if x2 > 740 :
         x2 = 738
         fill(220,0,0)
@@ -147,6 +151,10 @@ def draw():
         healh = -21
         x3 = 0.2
         prozhealh = 0
+        y = 1
+        x = 240
+        x2 = 350
+        time = 0
         if healh > -19 :
                 if not sound4.isPlaying():
                     sound4.play()
@@ -163,6 +171,52 @@ def draw():
     fill(255,0,0,prozhealh)
     rect(-1,-1,702,502)
     time = time + 0.020
+    if play == 0 :
+        c = 500
+        y = 1
+        x = 240
+        x2 = 350
+        x3 = 0.2
+        time = 0
+        healh = 90
+        inst = 0
+        re = 0
+        y2 = 0
+        jamp = 0
+        prozhealh = 0
+        fill(0,gren,0)
+        rect(-1,-1,702,502)
+        fill(0,0,255)
+        textSize(100)
+        text("catycraft",120,90)
+        fill(138,0,209)
+        textSize(25)
+        rectMode(CORNER)
+        rect(345,200,100,50)
+        fill(0)
+        text(u"играть",350,230)
+    if fil == 1:
+        gren = gren + 1
+    elif fil == 0:
+        gren = gren - 1
+    if gren > 255:
+        fil = 0
+    if gren < 10:
+        fil = 1
     fill(250)
-    translate(x2,240)
+    translate(x2,x)
     box(y,y,y)
+    if x >= 240 :
+        x = 240
+    if x >= 500 and c <= 240:
+        x = 500
+    if x <= -25 :
+        x = -25
+    if y2 > 0 :
+        c = c - 50
+    if y2  < 0 :
+        c = c + 50
+    if y2 != 0 :
+        y2 = y2 + 50
+    if y2 == 50:
+        y2 = - 50
