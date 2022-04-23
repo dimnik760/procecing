@@ -18,16 +18,20 @@ sound1 = 0
 sound2 = 0
 sound3 = 0
 sound4 = 0
+sound5 = 0
+img = 0
 def setup():
-    global sound1 , sound2 , sound3 , sound4
+    global sound1 , sound2 , sound3 , sound4 , img , sound5
     sound1 = SoundFile(this,"run1.mp3")
     sound2 = SoundFile(this,"jamp.mp3")
     sound3 = SoundFile(this,"pisk.mp3")
     sound4 = SoundFile(this,"kotudar.mp3")
-    sound2.play()
+    sound5 = SoundFile(this,"meow.mp3")
+    sound5.play()
     size(700,500,OPENGL)
+    img = loadImage("cat.png")
 def draw():
-    global y , x , x2 , time , healh , inst , re , x3 , prozhealh, sound1 , sound2 , sound3 , sound4 , y2 , jamp , c , gren , fil , play
+    global y , x , x2 , time , img , healh , inst , re , x3 , prozhealh, sound1 , sound2 , sound3 , sound4 , y2 , jamp , c , gren , fil , play , sound5
     background(0,255,253)
     line(0,240,700,240)
     rectMode(CENTER)
@@ -184,17 +188,31 @@ def draw():
         y2 = 0
         jamp = 0
         prozhealh = 0
-        fill(0,gren,0)
+        fill(0,gren,gren)
         rect(-1,-1,702,502)
         fill(0,0,255)
         textSize(100)
         text("catycraft",120,90)
+        textSize(15)
+        text(u"shadow барсик games",535,495)
         fill(138,0,209)
         textSize(25)
         rectMode(CORNER)
         rect(345,200,100,50)
         fill(0)
         text(u"играть",350,230)
+        textSize(10)
+        fill(0)
+        text("x=",180,10)
+        text("y=",180,20)
+        text(mouseX,200,10)
+        text(mouseY,200,20)
+        image(img, -70, 40)
+        if mousePressed :
+            if mouseX > 345 and mouseX < 445 and mouseY < 250 and mouseY > 200:
+                play = 1
+            if mouseX > 1 and mouseX < 115 and mouseY < 495 and mouseY > 370:
+                 sound5.play()
     if fil == 1:
         gren = gren + 1
     elif fil == 0:
