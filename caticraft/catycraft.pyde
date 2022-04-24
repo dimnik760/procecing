@@ -212,7 +212,8 @@ def draw():
             if mouseX > 345 and mouseX < 445 and mouseY < 250 and mouseY > 200:
                 play = 1
             if mouseX > 1 and mouseX < 115 and mouseY < 495 and mouseY > 370:
-                 sound5.play()
+                if not sound5.isPlaying():
+                       sound5.play()
     if fil == 1:
         gren = gren + 1
     elif fil == 0:
