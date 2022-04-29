@@ -2,7 +2,7 @@ add_library('sound')
 play = 0
 c = 500
 y = 1
-x = 240
+ybox = 240
 x2 = 350
 x3 = 0.2
 time = 0
@@ -31,7 +31,7 @@ def setup():
     size(700,500,OPENGL)
     img = loadImage("cat.png")
 def draw():
-    global y , x , x2 , time , img , healh , inst , re , x3 , prozhealh, sound1 , sound2 , sound3 , sound4 , y2 , jamp , c , gren , fil , play , sound5
+    global y , ybox , x2 , time , img , healh , inst , re , x3 , prozhealh, sound1 , sound2 , sound3 , sound4 , y2 , jamp , c , gren , fil , play , sound5
     background(0,255,253)
     line(0,240,700,240)
     rectMode(CENTER)
@@ -42,7 +42,7 @@ def draw():
         inst = 1 
         if key == 'W' or key == 'w' or key == u'ц' or key == u'Ц':
             y = y + 1
-            x = x - 0.3
+            ybox = ybox - 0.3
             x3 = x3 + 0.005
             if healh > -19 :
                 if not sound1.isPlaying():
@@ -50,7 +50,7 @@ def draw():
                     sound1.play()
         if key == 'S' or key == 's' or key == u'ы' or key == u'Ы':
             y = y - 1
-            x = x + 0.5
+            ybox = ybox + 0.5
             x3 = x3 - 0.005
             if healh > -19 :
                 if not sound1.isPlaying():
@@ -71,9 +71,9 @@ def draw():
         if key == 'R' or key == 'r' or key == u'к' or key == u'К':
             re = 1
         if key == ' ' :
-            x = x + 100
-            jamp = 1
-            y2 = 1
+            if jamp == 0 :
+                jamp = 1
+            #y2 = 1
             if healh > -19 :
                 if not sound2.isPlaying():
                     sound2.play()
@@ -91,7 +91,7 @@ def draw():
         fill(255)
         text(u"для входа в игру нажмите любую кнопку",10,495)
         y = 1
-        x = 240
+        ybox = 240
         x2 = 350
         time = 0
         healh = 90
@@ -102,8 +102,8 @@ def draw():
     if y == 0 :
        y = 1 
     if jamp == 0 :   
-        if x > 240 :
-            x = 240
+        if ybox > 240 :
+            ybox = 240
     if x2 > 740 :
         x2 = 738
         fill(220,0,0)
@@ -164,7 +164,7 @@ def draw():
                     sound4.play()
         if re == 1 :
             y = 1
-            x = 240
+            ybox = 240
             x2 = 350
             time = 0
             healh = 90
@@ -178,7 +178,7 @@ def draw():
     if play == 0 :
         c = 500
         y = 1
-        x = 240
+        ybox = 240
         x2 = 350
         x3 = 0.2
         time = 0
@@ -223,19 +223,13 @@ def draw():
     if gren < 10:
         fil = 1
     fill(250)
-    translate(x2,x)
+    translate(x2,ybox)
     box(y,y,y)
-    if x >= 240 :
-        x = 240
-    if x >= 500 and c <= 240:
-        x = 500
-    if x <= -25 :
-        x = -25
-    if y2 > 0 :
-        c = c - 50
-    if y2  < 0 :
-        c = c + 50
-    if y2 != 0 :
-        y2 = y2 + 50
-    if y2 == 50:
-        y2 = - 50
+    if jamp == 1 :
+        ybox = ybox + 1
+    if jamp == 2:
+        ybox = ybox - 1
+    if ybox >= 300 :
+        jamp = 2
+    if ybox < 240:
+        jamp = 0
