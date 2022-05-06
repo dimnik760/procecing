@@ -20,6 +20,10 @@ sound3 = 0
 sound4 = 0
 sound5 = 0
 img = 0
+Yrect = 240
+zbox = 0
+mousey = 0
+mousex = 0
 def setup():
     global sound1 , sound2 , sound3 , sound4 , img , sound5
     sound1 = SoundFile(this,"run1.mp3")
@@ -31,19 +35,20 @@ def setup():
     size(700,500,OPENGL)
     img = loadImage("cat.png")
 def draw():
-    global y , ybox , x2 , time , img , healh , inst , re , x3 , prozhealh, sound1 , sound2 , sound3 , sound4 , y2 , jamp , c , gren , fil , play , sound5
+    global y , ybox , x2 , time , img , healh , inst , re , x3 , prozhealh, sound1 , sound2 , sound3 , sound4 , y2 , jamp , c , gren , fil , play , sound5 , Yrect , zbox , mousex , mousey 
     background(0,255,253)
-    line(0,240,700,240)
-    rectMode(CENTER)
+    rectMode(CORNER)
     fill(0,112,121)
-    rect(350,370,701,260)
+    rect(0,Yrect,701,260)
     textSize(40)
+    rectMode(CENTER)
     if keyPressed == True: 
         inst = 1 
         if key == 'W' or key == 'w' or key == u'ц' or key == u'Ц':
             y = y + 1
             ybox = ybox - 0.3
             x3 = x3 + 0.005
+            zbox = zbox + 1
             if healh > -19 :
                 if not sound1.isPlaying():
                     sound1.play()
@@ -52,6 +57,7 @@ def draw():
             y = y - 1
             ybox = ybox + 0.5
             x3 = x3 - 0.005
+            zbox = zbox - 1
             if healh > -19 :
                 if not sound1.isPlaying():
                     sound1.play()
@@ -77,8 +83,11 @@ def draw():
             if healh > -19 :
                 if not sound2.isPlaying():
                     sound2.play()
-    #if mousePressed :
         
+    text(y,100,200)
+    if y > 100 :
+        y = 100
+        ybox = ybox + 3
     if inst == 0 :
         fill(255,132,0,250)
         rect(350,250,700,500)
@@ -104,7 +113,7 @@ def draw():
     if jamp == 0 :   
         if ybox > 240 :
             ybox = 240
-    if x2 > 740 :
+    if x2 > 1000 :
         x2 = 738
         fill(220,0,0)
         rect(0,250,10,500)
@@ -113,7 +122,7 @@ def draw():
         if healh > -19 :
                     sound4.play()
         healh = healh - 1
-    if x2 < -40 :
+    if x2 < -1000 :
         if healh > -19 :
                     sound4.play()
         x2 = -38
@@ -222,14 +231,25 @@ def draw():
         fil = 0
     if gren < 10:
         fil = 1
+    if mousePressed :
+        mousex  = mouseX 
+        mousey = mouseY
+        rotateY(radians(mousex))
     fill(250)
     translate(x2,ybox)
+    translate(0,0,zbox)
+    fill(0,255,0)
     box(y,y,y)
     if jamp == 1 :
-        ybox = ybox + 1
+        ybox = ybox + 2
     if jamp == 2:
-        ybox = ybox - 1
+        ybox = ybox - 2
     if ybox >= 300 :
         jamp = 2
     if ybox < 240:
         jamp = 0
+    
+    if jamp == 1 :
+        Yrect = Yrect + 2
+    if jamp == 2:
+        Yrect = Yrect - 2
