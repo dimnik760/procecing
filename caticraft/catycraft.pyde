@@ -40,7 +40,6 @@ def setup():
 def draw():
     global y , ybox , x2 , time , img , sound , setings , volume , healh , inst , re , x3 , prozhealh, sound1 , sound2 , sound3 , sound4 , y2 , jamp , c , gren , fil , play , sound5 , Yrect , zbox , mousex , mousey , volume 
     background(0,255,253)
-   
     strokeWeight(1)
     rectMode(CORNER)
     fill(0,112,121)
@@ -56,8 +55,8 @@ def draw():
             zbox = zbox + 1
             if healh > -19 :
                 if not sound1.isPlaying():
-                    sound1.play()
-                    sound1.play()
+                    sound1.play(1,0,volume)
+                    sound1.play(1,0,volume)
         if key == 'S' or key == 's' or key == u'ы' or key == u'Ы':
             y = y - 1
             ybox = ybox + 0.5
@@ -65,20 +64,20 @@ def draw():
             zbox = zbox - 1
             if healh > -19 :
                 if not sound1.isPlaying():
-                    sound1.play()
-                    sound1.play()
+                    sound1.play(1,0,volume)
+                    sound1.play(1,0,volume)
         if key == 'A' or key == 'a' or key == u'ф' or key == u'Ф':
             x2 = x2 + x3
             if healh > -19 :
                 if not sound1.isPlaying():
-                    sound1.play()
-                    sound1.play()
+                    sound1.play(1,0,volume)
+                    sound1.play(1,0,volume)
         if key == 'D' or key == 'd' or key == u'в' or key == u'В':
             x2 = x2 - x3
             if healh > -19 :
                 if not sound1.isPlaying():
-                    sound1.play()
-                    sound1.play()
+                    sound1.play(1,0,volume)
+                    sound1.play(1,0,volume)
         if key == 'R' or key == 'r' or key == u'к' or key == u'К':
             re = 1
         if key == ' ' :
@@ -87,7 +86,7 @@ def draw():
             #y2 = 1
             if healh > -19 :
                 if not sound2.isPlaying():
-                    sound2.play()
+                    sound2.play(1,0,volume)
 
                 
     text(y,100,200)
@@ -126,11 +125,11 @@ def draw():
         fill(255,0,0)
         text(u"вы врезались в барьер!",100,250)
         if healh > -19 :
-                    sound4.play()
+                    sound4.play(1,0,volume)
         healh = healh - 1
     if x2 < -1000 :
         if healh > -19 :
-                    sound4.play()
+                    sound4.play(1,0,volume)
         x2 = -38
         fill(220,0,0)
         rect(700,250,10,500)
@@ -143,11 +142,11 @@ def draw():
         prozhealh = 100
         if healh > -19 :
                 if not sound3.isPlaying():
-                    sound3.play()
+                    sound3.play(1,0,volume)
     if healh == -10 :
         if healh > -19 :
                 if not sound3.isPlaying():
-                    sound3.play()
+                    sound3.play(1,0,volume)
         prozhealh = 150
 #строка жизней
     textSize(20)
@@ -176,7 +175,7 @@ def draw():
         time = 0
         if healh > -19 :
                 if not sound4.isPlaying():
-                    sound4.play()
+                    sound4.play(1,0,volume)
         if re == 1 :
             y = 1
             ybox = 240
@@ -220,12 +219,6 @@ def draw():
         text(u"играть",350,230)
         textSize(19)
         text(u"настройки",345,290)
-        textSize(10)
-        fill(0)
-        text("x=",180,10)
-        text("y=",180,20)
-        text(mouseX,200,10)
-        text(mouseY,200,20)
         image(img, -70, 40)
         if mousePressed :
             if mouseX > 345 and mouseX < 445 and mouseY < 250 and mouseY > 200:
@@ -233,7 +226,7 @@ def draw():
                 rect(345,200,100,50)
             if mouseX > 1 and mouseX < 115 and mouseY < 495 and mouseY > 370:
                 if not sound5.isPlaying():
-                       sound5.play()
+                       sound5.play(1,0,volume)
     
             if mouseX > 345 and mouseX < 445 and mouseY < 310 and mouseY > 260:
                 setings = 1
@@ -272,9 +265,9 @@ def draw():
         Yrect = Yrect + 2
     if jamp == 2:
         Yrect = Yrect - 2
+        
     if setings == 1 :
         fill(0)
-        strokeWeight(15)
         rect(0,0,700,500)
         textSize(15)
         fill(255)
@@ -286,5 +279,43 @@ def draw():
         if mousePressed :
             if mouseX > 0 and mouseX < 80 and mouseY < 30 and mouseY > 0:
                 setings = 0
-        # if sound == 1 :
-    #sound5.volume(0.5
+                sound = 0
+            if mouseX > 0 and mouseX < 300 and mouseY < 80 and mouseY > 45:
+                sound = 1
+                
+        fill(50)
+        rect(0,40,300,50)
+        fill(255)
+        text(u"настройки громкости звука",14,70)
+        if sound == 1 :
+            fill(0)
+            rect(0,0,700,500)
+            rect(0,40,300,50)
+            textSize(15)
+            fill(255)
+            text(u"<-назад",15,20)
+            text(volume,80,40)
+            text("%",125,40)
+            fill(100)
+            rect(0,40,200,50)
+            rect(280,40,200,50)
+            fill(255)
+            textSize(25)
+            text(u"меньше(-)",15,75)
+            text(u"больше(+)",300,75)
+            if volume < 0.00 :
+                volume = 0.001 
+            if volume > 1.00 :
+                 volume = 0.99
+            if mousePressed :
+                if mouseX > 0 and mouseX < 200 and mouseY < 90 and mouseY > 40:
+                    volume = volume - 0.01
+                    
+                if mouseX > 280 and mouseX < 480 and mouseY < 80 and mouseY > 45:
+                    volume = volume + 0.01
+    textSize(15)
+    fill(random(255),random(255),random(255))
+    text("x=",190,20)
+    text("y=",190,30)
+    text(mouseX,210,20)
+    text(mouseY,210,30)
